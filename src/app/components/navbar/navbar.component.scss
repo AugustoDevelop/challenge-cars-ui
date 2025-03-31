@@ -1,0 +1,71 @@
+/* Navbar (mat-toolbar) */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  background: linear-gradient(45deg, #2A5298, #1E3C72);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 16px; /* Ajuste para padding */
+}
+
+/* Centralizando o conteúdo do logo */
+.navbar-brand {
+  font-weight: bold;
+  color: white;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links button {
+  margin-left: 16px;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Separador de espaço entre itens de navegação e o logo */
+.spacer {
+  flex: 1;
+}
+
+/* Estilo para o botão de menu em dispositivos móveis */
+.mobile-menu-button {
+  display: none;
+}
+
+/* Exibe o botão de menu em dispositivos móveis */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Oculta o menu em telas pequenas */
+  }
+
+  .mobile-menu-button {
+    display: block; /* Exibe o botão de menu */
+  }
+}
+
+/* Efeito de hover nos links */
+.navbar-links button:hover {
+  color: #8dd7f9 !important;
+}
+
+/* Estilo do botão de logout */
+.navbar-links button.logout {
+  color: #DC3545 !important;
+  border-color: #DC3545 !important;
+}
+
+.navbar-links button.logout:hover {
+  background-color: #DC3545 !important;
+  color: white !important;
+}
+
+/* Para garantir que o conteúdo não sobreponha o navbar fixo */
+body {
+  margin-top: 80px; /* Ajuste para garantir que o conteúdo tenha um espaço de 80px do topo */
+}

@@ -1,0 +1,52 @@
+/* Adicionando um estilo mais bonito e consistente para o componente de upload de imagem */
+
+.upload-instructions {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hint-text {
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-button {
+  margin-bottom: 5%;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.upload-button mat-icon {
+  margin-right: 10px;
+}
+
+.image-preview {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 400px; /* Limitar a altura da imagem */
+  object-fit: contain;
+}
+
+mat-dialog-actions {
+  display: flex; 
+  justify-content: end;
+}
+
+mat-dialog-content {
+  text-align: center;
+}

@@ -1,0 +1,20 @@
+.ng-invalid:not(form) {
+  border-left: 5px solid red;
+}
+
+.ng-valid:not(form) {
+  border-left: 5px solid green;
+}
+
+/* Adicionando borda vermelha nos campos com erro */
+.is-invalid {
+  border-color: #dc3545;
+}
+
+/* Exibindo mensagens de erro */
+.invalid-feedback {
+  display: block; /* Garante que a mensagem de erro apareça */
+  color: #dc3545;
+  font-size: 0.875em;
+  margin-top: 5px;
+}

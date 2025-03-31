@@ -1,0 +1,61 @@
+.ng-invalid:not(form) {
+  border-left: 5px solid red;
+}
+
+.ng-valid:not(form) {
+  border-left: 5px solid green;
+}
+
+
+/* Estilo para a div principal que tem o fundo animado */
+.login-container {
+  position: relative;
+  height: 100vh; /* A imagem ocupa 100% da altura */
+  width: 100vw; /* A imagem ocupa 100% da largura */
+  background: linear-gradient(45deg, #1E3C72, #2A5298, #1B1A57, #4E78A0); /* Gradiente de azul */
+  background-size: 400% 400%; /* Aumenta o tamanho do gradiente para permitir o movimento */
+  animation: gradientAnimation 10s ease infinite; /* Animação do gradiente */
+}
+
+/* A div do formulário de login terá outra imagem como fundo */
+.login-card {
+  position: absolute;
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta o posicionamento */
+  width: 30; /* Largura fixa do card */
+  padding: 1rem; /* Para não colar a borda do card */
+  border-radius: 10px; /* Borda arredondada */
+  border: none;
+}
+
+/* Garantir que o formulário se ajuste bem dentro do card */
+.card-body {
+  background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente */
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Ajustando a altura mínima do formulário */
+main {
+  min-height: 100vh;
+}
+
+/* Evitar overflow no login */
+.card {
+  overflow: hidden; /* Evita que o conteúdo ultrapasse seus limites */
+}
+
+
+/* Animação de gradiente */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

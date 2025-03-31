@@ -1,0 +1,44 @@
+/* Estilo para o card de detalhes do carro */
+.car-card {
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.car-info {
+  margin-top: 20px;
+}
+
+.car-image-preview {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilos para o botão de upload */
+.upload-btn-container button {
+  margin-top: 15px;
+}
+
+mat-card-title{
+  margin-bottom: 5%;
+}
+
+/* Adicionar responsividade */
+@media (max-width: 768px) {
+  .car-info, .car-image {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

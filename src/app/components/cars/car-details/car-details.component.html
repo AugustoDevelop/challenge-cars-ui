@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <h2 class="text-center text-primary fw-bold">Detalhes do Carro</h2>
+  <div *ngIf="car" class="car-details mt-4">
+    <!-- Exibição de imagem do carro -->
+    <div class="car-image">
+      <mat-card class="car-card">
+        <mat-card-header>
+          <mat-card-title>Imagem do Carro</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="image-container">
+            <!-- Exibir imagem do carro -->
+            <img
+              *ngIf="car.image"
+              [src]="car.image"
+              alt="Imagem do carro"
+              class="car-image-preview"
+            />
+            <!-- Caso não tenha imagem, exibir um ícone de imagem padrão -->
+            <img
+              *ngIf="!car.image"
+              src="assets/default-car-image.png"
+              alt="Imagem do carro"
+              class="car-image-preview"
+            />
+          </div>
+          <!-- Botão de upload para alterar a imagem -->
+          <div class="upload-btn-container">
+            <button mat-raised-button color="primary" (click)="uploadImage()">
+              <mat-icon>cloud_upload</mat-icon> Upload Imagem
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Detalhes do Carro -->
+    <div class="car-info mt-4">
+      <mat-card class="car-card">
+        <mat-card-header>
+          <mat-card-title>Informações do Carro</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Modelo:</strong> {{ car.model }}</p>
+          <p><strong>Cor:</strong> {{ car.color }}</p>
+          <p><strong>Placa:</strong> {{ car.licensePlate }}</p>
+          <p><strong>Ano:</strong> {{ car.year }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

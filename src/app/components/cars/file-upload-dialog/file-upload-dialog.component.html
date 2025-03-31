@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Upload de Imagem</h2>
+
+<mat-dialog-content>
+  <!-- Descrição explicativa do que o usuário deve fazer -->
+  <div class="upload-instructions">
+    <p><strong>Selecione uma imagem para carregar:</strong></p>
+    <p class="hint-text">
+      Apenas imagens nos formatos JPG, JPEG, PNG são aceitas (máximo de 5MB).
+    </p>
+  </div>
+
+  <!-- Contêiner para o upload com uma visualização da imagem -->
+  <div class="file-upload-container">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="fileInput.click()"
+      class="upload-button"
+    >
+      <mat-icon>cloud_upload</mat-icon> Selecionar Imagem
+    </button>
+
+    <!-- Campo de input de arquivo, invisível e acionado pelo botão -->
+    <input
+      #fileInput
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      style="display: none"
+    />
+
+    <!-- Pré-visualização da imagem selecionada -->
+    <div *ngIf="selectedFile" class="image-preview">
+      <img
+        [src]="imagePreviewUrl"
+        alt="Pré-visualização da Imagem"
+        class="preview-image"
+      />
+      <button mat-icon-button color="warn" (click)="removeImage()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancelar</button>
+  <button
+    mat-button
+    color="primary"
+    (click)="submitImage()"
+    [disabled]="!selectedFile"
+  >
+    Enviar
+  </button>
+</mat-dialog-actions>

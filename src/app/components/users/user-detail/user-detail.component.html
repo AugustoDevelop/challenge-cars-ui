@@ -1,0 +1,113 @@
+<div *ngIf="user" class="user-profile-container">
+  <!-- Seção principal com detalhes do usuário -->
+  <mat-card class="user-profile-card">
+    <mat-card-header>
+      <div mat-card-avatar class="user-avatar">
+        <mat-icon>person</mat-icon>
+      </div>
+      <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+      <mat-card-subtitle>Perfil do Usuário</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content class="user-details-content">
+      <div class="user-info-grid">
+        <div class="user-info-item">
+          <mat-icon aria-hidden="false" aria-label="Email">email</mat-icon>
+          <div class="user-info-text">
+            <span class="info-label">E-mail</span>
+            <span class="info-value">{{ user.email }}</span>
+          </div>
+        </div>
+
+        <div class="user-info-item">
+          <mat-icon aria-hidden="false" aria-label="Data de Nascimento"
+            >calendar_today</mat-icon
+          >
+          <div class="user-info-text">
+            <span class="info-label">Data de Nascimento</span>
+            <span class="info-value">{{
+              user.birthday | date : "dd/MM/yyyy"
+            }}</span>
+          </div>
+        </div>
+
+        <div class="user-info-item">
+          <mat-icon aria-hidden="false" aria-label="Nome de Usuário"
+            >account_circle</mat-icon
+          >
+          <div class="user-info-text">
+            <span class="info-label">Nome de Usuário</span>
+            <span class="info-value">{{ user.login }}</span>
+          </div>
+        </div>
+
+        <div class="user-info-item">
+          <mat-icon aria-hidden="false" aria-label="Telefone">phone</mat-icon>
+          <div class="user-info-text">
+            <span class="info-label">Telefone</span>
+            <span class="info-value">{{
+              user.phone | mask : "(00) 00000-0000"
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Seção de veículos -->
+  <div class="vehicles-section">
+    <h2 class="section-title">
+      <mat-icon>directions_car</mat-icon>
+      <span>Veículos</span>
+    </h2>
+
+    <div *ngIf="user.cars && user.cars.length > 0" class="vehicles-grid">
+      <mat-card
+        *ngFor="let car of user.cars"
+        class="vehicle-card"
+        (click)="viewCarDetails(car.id)"
+      >
+        <div class="vehicle-image-container">
+          <img
+            [src]="car.image || 'assets/images/default-car.jpg'"
+            [alt]="car.model"
+            class="vehicle-image"
+            (error)="handleImageError($event)"
+          />
+          <div class="vehicle-year-badge">{{ car.year }}</div>
+        </div>
+
+        <mat-card-content class="vehicle-details">
+          <h3 class="vehicle-model">{{ car.model }}</h3>
+
+          <div class="vehicle-info">
+            <div class="vehicle-info-item">
+              <mat-icon class="vehicle-info-icon">local_offer</mat-icon>
+              <span>{{ car.licensePlate }}</span>
+            </div>
+
+            <div class="vehicle-info-item">
+              <mat-icon class="vehicle-info-icon">palette</mat-icon>
+              <span>{{ car.color }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card
+      *ngIf="!user.cars || user.cars.length === 0"
+      class="empty-state-card"
+    >
+      <mat-card-content class="empty-state-content">
+        <mat-icon class="empty-state-icon">directions_car_off</mat-icon>
+        <p class="empty-state-message">Nenhum veículo cadastrado</p>
+        <button mat-flat-button color="primary" (click)="addCar()">
+          Adicionar Veículo
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

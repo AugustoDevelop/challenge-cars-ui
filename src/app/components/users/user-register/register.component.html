@@ -1,0 +1,165 @@
+<div class="card shadow rounded-3" style="width: 55rem;">
+  <div class="card-header bg-primary text-white py-3">
+    <h4 class="mb-0"><i class="fas fa-user-plus me-2"></i> Formulário de cadastro</h4>
+  </div>
+  <div class="card-body p-4">
+    <form [formGroup]="form" (ngSubmit)="submitRegister()">
+      <div class="row">
+        <!-- Primeiro Nome -->
+        <div class="col-md-6 mb-3">
+          <label for="firstName" class="form-label">Primeiro Nome</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName"
+              [class.is-invalid]="form.get('firstName')?.invalid && form.get('firstName')?.touched"
+              placeholder="Seu primeiro nome" />
+            <div class="invalid-feedback" *ngIf="form.get('firstName')?.errors?.['required'] && form.get('firstName')?.touched">
+              O primeiro nome é obrigatório.
+            </div>
+            <div class="invalid-feedback" *ngIf="form.get('firstName')?.errors?.['minlength'] && form.get('firstName')?.touched">
+              O nome deve ter pelo menos 3 caracteres.
+            </div>
+          </div>
+        </div>
+
+        <!-- Último Nome -->
+        <div class="col-md-6 mb-3">
+          <label for="lastName" class="form-label">Último Nome</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName"
+            [class.is-invalid]="form.get('lastName')?.invalid && form.get('lastName')?.touched"
+            placeholder="Seu último nome" />
+          <div class="invalid-feedback" *ngIf="form.get('lastName')?.errors?.['required'] && form.get('lastName')?.touched">
+            O último nome é obrigatório.
+          </div>
+            <div class="invalid-feedback" *ngIf="form.get('lastName')?.errors?.['minlength'] && form.get('lastName')?.touched">
+              O último nome deve ter pelo menos 4 caracteres.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Telefone -->
+        <div class="col-md-6 mb-3">
+          <label for="phone" class="form-label">Telefone</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            <input type="text" class="form-control" id="phone" formControlName="phone"
+              [class.is-invalid]="form.get('phone')?.invalid && form.get('phone')?.touched"
+              placeholder="Digite seu telefone"
+              mask="(00) 0 0000 - 0000" />
+          </div>
+
+          <div class="invalid-feedback" *ngIf="form.get('phone')?.errors?.['required'] && form.get('phone')?.touched">
+            O telefone é obrigatório
+          </div>
+          <div class="invalid-feedback" *ngIf="form.get('phone')?.errors?.['pattern'] && form.get('phone')?.touched">
+            Formato de telefone inválido
+          </div>
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+          <label for="birthday" class="form-label">Aniversário</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+            <input type="date" class="form-control" id="birthday" formControlName="birthday" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            <input type="email" class="form-control" id="email" formControlName="email"
+              [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+              placeholder="Digite seu email" />
+          </div>
+          <div class="invalid-feedback" *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched">
+            O e-mail é obrigatório
+          </div>
+          <div class="invalid-feedback" *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched">
+            Formato de e-mail inválido
+          </div>
+        </div>
+
+        <!-- Login -->
+        <div class="col-md-6 mb-3">
+          <label for="login" class="form-label">Login</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" class="form-control" id="login" formControlName="login"
+              [class.is-invalid]="form.get('login')?.invalid && form.get('login')?.touched"
+              placeholder="Seu login" />
+          </div>
+          <div class="invalid-feedback" *ngIf="form.get('login')?.errors?.['required'] && form.get('login')?.touched">
+            O login é obrigatório
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Senha e Confirmação de Senha -->
+        <div class="col-md-6 mb-3">
+          <label for="password" class="form-label">Senha</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+              formControlName="password"
+              [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched"
+              placeholder="Digite sua senha" />
+            <button type="button" class="btn btn-outline-secondary" (click)="showPassword = !showPassword">
+              <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+          </div>
+          <div class="invalid-feedback"
+            *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched">
+            A senha é obrigatória
+          </div>
+        </div>
+
+        <!-- Confirmação de Senha -->
+        <div class="col-md-6 mb-3">
+          <label for="cpassword" class="form-label">Confirme sua senha</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control" id="cpassword"
+              formControlName="password_confirmation"
+              [class.is-invalid]="form.get('password_confirmation')?.invalid && form.get('password_confirmation')?.touched || passwordMismatch"
+              placeholder="Confirme sua senha" />
+            <button type="button" class="btn btn-outline-secondary" (click)="showConfirmPassword = !showConfirmPassword">
+              <i [class]="showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+          </div>
+          <div class="invalid-feedback"
+            *ngIf="form.get('password_confirmation')?.errors?.['required'] && form.get('password_confirmation')?.touched">
+            A confirmação da senha é necessária
+          </div>
+          <div class="invalid-feedback" *ngIf="passwordMismatch">
+            As senhas não coincidem
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Botão de envio -->
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100 py-2 mb-3" [disabled]="form.invalid || isLoading">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+            Cadastre-se
+          </button>
+        </div>
+      </div>
+
+      <p class="text-center mb-0">
+        Já tem uma conta?
+        <a routerLink="/login" class="text-primary">Login</a>
+      </p>
+    </form>
+  </div>
+</div>

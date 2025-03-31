@@ -1,0 +1,28 @@
+@import 'bootstrap/scss/bootstrap';
+
+main {
+  min-height: calc(100vh - 80px);
+  display: block; /* Remover o display flex e usar block para ocupar toda a largura */
+}
+
+.card {
+  overflow: hidden;
+}
+
+.success-snackbar {
+  --mdc-snackbar-container-color: green;
+  --mat-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color: white;
+}
+
+.error-snackbar {
+  --mdc-snackbar-container-color: red;
+  --mat-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color: white;
+}
+
+.warning-snackbar {
+  --mdc-snackbar-container-color: yellow;
+  --mat-snack-bar-button-color: black;
+  --mdc-snackbar-supporting-text-color: black;
+}

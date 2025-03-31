@@ -1,0 +1,71 @@
+/* Estilo geral para o container da tabela */
+.table-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 10px;
+  width: 70vw; /* Ajuste para 100% da largura */
+  overflow-x: auto; /* Permite rolagem horizontal caso o conteúdo ultrapasse */
+}
+
+/* Definições para as células de header e dados */
+.mat-header-cell, .mat-cell {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 1rem;
+  word-wrap: break-word; /* Quebra de linha em palavras longas */
+}
+
+/* Estilo do header da tabela */
+.mat-header-row {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 10px;
+  }
+
+  .mat-header-cell, .mat-cell {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .mat-header-cell:last-child,
+  .mat-cell:last-child {
+    width: 80px !important; /* Ajuste da coluna de Ação em telas menores */
+  }
+
+  /* Ajuste para o ícone em telas menores */
+  .mat-cell:last-child .action-icon {
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-container {
+    padding: 5px;
+  }
+
+  .mat-header-cell, .mat-cell {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .mat-header-cell:last-child,
+  .mat-cell:last-child {
+    width: 70px !important; /* Ajuste adicional para telas muito pequenas */
+  }
+
+  /* Ajuste para o ícone em telas muito pequenas */
+  .mat-cell:last-child .action-icon {
+    font-size: 18px;
+    width: 28px;
+    height: 28px;
+    line-height: 18px;
+  }
+}

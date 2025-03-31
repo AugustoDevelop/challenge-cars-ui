@@ -1,0 +1,124 @@
+<mat-toolbar color="primary" class="navbar">
+  <!-- Logo ou título da página -->
+  <div class="navbar-brand">
+    <i class="fas fa-home me-2" aria-hidden="true"></i>
+    <span class="sr-only">Desafio Frontend</span>
+    <!-- Acessibilidade: logo visível apenas para screen readers -->
+    Desafio Frontend
+  </div>
+
+  <!-- Espaço para empurrar o conteúdo para o lado direito -->
+  <span class="spacer"></span>
+
+  <!-- Links de navegação para usuários logados -->
+  <div *ngIf="isLoggedIn" class="navbar-links">
+    <!-- Submenu Users -->
+    <button
+      mat-button
+      [matMenuTriggerFor]="userMenu"
+      aria-label="Menu de Usuários"
+    >
+      <i class="fas fa-users me-1" aria-hidden="true"></i>Usuários
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button
+        mat-menu-item
+        routerLink="users"
+        routerLinkActive="active"
+        aria-label="Listagem de usuários"
+      >
+        <i class="fas fa-list me-1" aria-hidden="true"></i>Listagem
+      </button>
+      <button
+        mat-menu-item
+        routerLink="users/register"
+        routerLinkActive="active"
+        aria-label="Cadastrar novo usuário"
+      >
+        <i class="fas fa-user-plus me-1" aria-hidden="true"></i>Cadastrar
+      </button>
+    </mat-menu>
+
+    <!-- Submenu Cars -->
+    <button
+      mat-button
+      [matMenuTriggerFor]="carMenu"
+      aria-label="Menu de Carros"
+    >
+      <i class="fa-solid fa-car me-1" aria-hidden="true"></i>Carros
+    </button>
+    <mat-menu #carMenu="matMenu">
+      <button
+        mat-menu-item
+        routerLink="cars"
+        routerLinkActive="active"
+        aria-label="Listagem de carros"
+      >
+        <i class="fas fa-list me-1" aria-hidden="true"></i>Listagem
+      </button>
+      <button
+        mat-menu-item
+        routerLink="cars/register"
+        routerLinkActive="active"
+        aria-label="Cadastrar novo carro"
+      >
+        <i class="fas fa-car me-1" aria-hidden="true"></i>Cadastrar
+      </button>
+    </mat-menu>
+
+    <!-- Logout -->
+    <button mat-button (click)="logout()" aria-label="Sair">
+      <i class="fas fa-sign-out-alt me-1" aria-hidden="true"></i>Sair
+    </button>
+  </div>
+
+  <!-- Links de navegação para usuários não logados -->
+  <div *ngIf="!isLoggedIn" class="navbar-links">
+    <!-- Submenu Users -->
+    <button
+      mat-button
+      [matMenuTriggerFor]="userMenu"
+      aria-label="Menu de Usuários"
+    >
+      <i class="fas fa-users me-1" aria-hidden="true"></i>Usuários
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button
+        mat-menu-item
+        routerLink="users"
+        routerLinkActive="active"
+        aria-label="Listagem de usuários"
+      >
+        <i class="fas fa-list me-1" aria-hidden="true"></i>Listagem
+      </button>
+      <button
+        mat-menu-item
+        routerLink="users/register"
+        routerLinkActive="active"
+        aria-label="Cadastrar novo usuário"
+      >
+        <i class="fas fa-user-plus me-1" aria-hidden="true"></i>Cadastrar
+      </button>
+    </mat-menu>
+
+    <!-- Login -->
+    <button
+      mat-button
+      routerLink="login"
+      routerLinkActive="active"
+      aria-label="Entrar"
+    >
+      <i class="fas fa-sign-in-alt me-1" aria-hidden="true"></i>Entrar
+    </button>
+  </div>
+
+  <!-- Botão de menu para dispositivos móveis -->
+  <button
+    mat-icon-button
+    class="mobile-menu-button"
+    (click)="toggleMenu()"
+    aria-label="Abrir menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
