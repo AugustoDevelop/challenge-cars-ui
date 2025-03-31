@@ -1,0 +1,43 @@
+.dialog-container{
+  width: 50vw;
+}
+
+.delete-icon {
+  font-size: 40px;
+  color: #d32f2f;
+  margin-bottom: 10px;
+}
+
+.warning-text {
+  font-size: 14px;
+  color: #d32f2f;
+  margin-top: 5px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+button {
+  min-width: 100px;
+}
+
+/* Botão Cancelar */
+button[color='accent'] {
+  color: #00796b;
+  border: 1px solid #00796b;
+}
+
+/* Botão Excluir */
+button[color='warn'] {
+  background-color: #d32f2f;
+  color: white;
+}
+
+button:disabled {
+  background-color: #e0e0e0; /* Cor de fundo do botão desabilitado */
+  color: #bdbdbd; /* Cor do texto do botão desabilitado */
+}
+

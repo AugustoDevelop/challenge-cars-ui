@@ -67,4 +67,8 @@ export class CarService {
     return this.http.post<any>(`${this.apiUrl}/${carId}/upload`, formData);
   }
 
+  deleteCar(carId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${carId}`);
+  }
+
 }

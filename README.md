@@ -51,8 +51,6 @@ Aplicação para gerenciamento de usuários e carros com autenticação JWT, des
 - **Frontend**: Angular 17 com TypeScript
 - **Autenticação**: JWT (JSON Web Token)
 - **UI**: Angular Material
-- **Testes**: Karma e Jasmine
-- **Qualidade de Código**: ESLint, SonarQube
 
 ### Decisões Técnicas
 
@@ -101,53 +99,6 @@ npm start
 ```
 
 Acesse: `http://localhost:4200`
-
-### Produção
-
-```bash
-npm run build
-```
-
-Arquivos de build estarão em `dist/`
-
-## 🧪 Testes
-
-### Testes Unitários
-
-```bash
-npm test
-```
-
-### Cobertura de Testes
-
-```bash
-npm run test:coverage
-```
-
-### Lint
-
-```bash
-npm run lint
-```
-
-## 🔍 Análise de Código
-
-```bash
-npm run sonar
-```
-
-## 🚢 Deploy
-
-### Configurações de Ambiente
-
-- `environment.ts`: Desenvolvimento
-- `environment.prod.ts`: Produção
-
-### Estratégias de Deploy
-
-- Containerização com Docker
-- Integração com CI/CD
-- Hospedagem em serviços de nuvem (AWS, Azure, GCP)
 
 ## 📄 Licença
 

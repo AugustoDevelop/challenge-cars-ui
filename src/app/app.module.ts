@@ -33,6 +33,8 @@ import { UserRegisterComponent } from './components/users/user-register/register
 import { UsersComponent } from './components/users/user-list/users.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FileUploadDialogComponent } from './components/cars/file-upload-dialog/file-upload-dialog.component';
+import { ConfirmDeleteDialogComponent } from './components/users/confirm-delete-dialog/confirm-delete-dialog.component';
+import { ConfirmDeleteCarDialogComponent } from './components/cars/confirm-delete-car-dialog/confirm-delete-car-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { FileUploadDialogComponent } from './components/cars/file-upload-dialog/
     CarDetailsComponent,
     CarListComponent,
     FileUploadDialogComponent,
+    ConfirmDeleteDialogComponent,
+    ConfirmDeleteCarDialogComponent,
   ],
   imports: [
     BrowserModule,

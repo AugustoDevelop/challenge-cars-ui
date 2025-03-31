@@ -4,6 +4,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { User } from '../../../core/model/user.model';
+import { UserService } from '../../../core/services/user/user.service';
+import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { NotifySnackService } from '../../../shared/notify/notify-snack.service';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +19,13 @@ export class UsersComponent implements OnInit {
   dataSource = new MatTableDataSource<any>([]);
   users: User[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private notify: NotifySnackService,
+    private http: HttpClient,
+    private router: Router,
+    private userService: UserService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -35,5 +45,39 @@ export class UsersComponent implements OnInit {
 
   viewDetails(userId: string): void {
     this.router.navigate([`/users/${userId}`]);
+  }
+
+  // Função para excluir o usuário
+  deleteUser(userId: number): void {
+    // Chama o serviço para excluir o usuário no backend
+    this.userService.deleteUser(userId).subscribe(
+      () => {
+        // Após a exclusão no backend, remove o usuário localmente
+        const index = this.users.findIndex(user => user.id === String(userId));
+        if (index !== -1) {
+          this.users.splice(index, 1);
+        }
+
+        this.notify.showSuccess("Usuário excluido com sucesso.")
+      },
+      error => {
+        console.error('Erro ao excluir usuário', error);
+        this.notify.showError("Error ao excluir usuário")
+      }
+    );
+  }
+
+  // Função para abrir o modal de confirmação
+  openConfirmDeleteDialog(userId: number): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
+      width: '500px',
+      data: { id: userId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteUser(result);
+      }
+    });
   }
 }

@@ -1,0 +1,26 @@
+<h2 mat-dialog-title class="text-center">Confirmar Exclusão de Carro</h2>
+
+<mat-dialog-content class="text-center">
+  <p>
+    Você tem certeza que deseja excluir o carro
+    <strong>{{ data.model }} ({{ data.licensePlate }})</strong>?
+  </p>
+  <p class="warning-text">Esta ação não pode ser desfeita.</p>
+
+  <!-- Mensagem que desaparece após a contagem chegar a zero -->
+  <p *ngIf="showCounterMessage">
+    Exclusão disponível em: <strong>{{ counter }} segundos</strong>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions">
+  <button mat-button color="accent" (click)="onCancel()">Cancelar</button>
+  <button
+    mat-button
+    color="warn"
+    (click)="onConfirm()"
+    [disabled]="disableDeleteButton"
+  >
+    Excluir
+  </button>
+</mat-dialog-actions>

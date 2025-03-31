@@ -1,0 +1,28 @@
+<h2 mat-dialog-title class="text-center">Confirmar Exclusão</h2>
+
+<mat-dialog-content class="text-center">
+  <mat-icon class="delete-icon" aria-hidden="true">delete_forever</mat-icon>
+  <p>
+    Você tem certeza que deseja excluir o usuário
+    <strong>{{ data.firstName }} {{ data.lastName }}</strong
+    >?
+  </p>
+  <p class="warning-text">Esta ação não pode ser desfeita.</p>
+
+  <!-- Mensagem que desaparece após a contagem chegar a zero -->
+  <p *ngIf="disableDeleteButton">
+    Exclusão disponível em: <strong>{{ counter }} segundos</strong>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions">
+  <button mat-button color="accent" (click)="onCancel()">Cancelar</button>
+  <button
+    mat-button
+    color="warn"
+    (click)="onConfirm()"
+    [disabled]="disableDeleteButton"
+  >
+    Excluir
+  </button>
+</mat-dialog-actions>

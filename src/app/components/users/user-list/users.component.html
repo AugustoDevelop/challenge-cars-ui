@@ -17,7 +17,7 @@
   <div *ngIf="dataSource.data.length === 0" class="table-container">
     <p class="text-center">
       Não há usuários cadastrados no momento. Por favor, adicione novos usuários
-      para visualizá-los aqui. .
+      para visualizá-los aqui.
     </p>
   </div>
 
@@ -43,15 +43,27 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefone</th>
         <td mat-cell *matCellDef="let user">{{ user.phone }}</td>
       </ng-container>
+
+      <!-- Coluna de Ação (visualizar e excluir) -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Ação</th>
         <td mat-cell *matCellDef="let user">
+          <!-- Ícone para visualização -->
           <mat-icon
             class="action-icon"
             style="cursor: pointer"
             (click)="viewDetails(user.id)"
           >
             visibility
+          </mat-icon>
+
+          <!-- Ícone para excluir -->
+          <mat-icon
+            class="action-icon"
+            style="cursor: pointer; color: red; margin-left: 10px"
+            (click)="openConfirmDeleteDialog(user.id)"
+          >
+            delete
           </mat-icon>
         </td>
       </ng-container>
